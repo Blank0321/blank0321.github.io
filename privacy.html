@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — Privacy</title>
+<meta name="description" content="What Pulse does and doesn't do with your data.">
+<meta name="theme-color" content="#07060c">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .doc { position: relative; z-index: 2; width: min(820px, calc(100% - 40px)); margin: 0 auto; padding: 130px 0 60px; }
+  .doc h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; letter-spacing: -.04em; line-height: 1; margin-bottom: 14px; }
+  .doc h2 { font-size: 22px; margin: 40px 0 10px; max-width: none; }
+  .doc p, .doc li { color: var(--dim); }
+  .doc li { margin: 6px 0; }
+  .doc b { color: var(--text); }
+  .doc a { color: #e879f9; }
+  .doc .upd { color: var(--mute); font-size: 14px; }
+  [data-l] { display: none; }
+  html[lang="en"] [data-l="en"], html[lang="ru"] [data-l="ru"] { display: block; }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<header class="nav">
+  <a class="brand" href="./" aria-label="Pulse"><img src="assets/icon.png" alt="" width="30" height="30"><span>pulse</span></a>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="ru">RU</button></div>
+  </div>
+</header>
+
+<main class="doc">
+<section data-l="en">
+  <h1>Privacy</h1>
+  <p class="upd">Last updated: November 25, 2026</p>
+  <p>Short version: Pulse is a music player that runs on your computer. We don't sell data, don't show ads and don't track you.</p>
+
+  <h2>What stays on your computer</h2>
+  <p>Your music files, library, playlists, settings, listening stats and assistant chat are stored locally in the app's folder (<b>%APPDATA%</b>). Pulse has no server of its own that collects them.</p>
+
+  <h2>Google sign-in (optional)</h2>
+  <ul>
+    <li>If you sign in with Google, Pulse asks for your name and email (to show who's signed in) and access to a <b>hidden app folder in your own Google Drive</b> (<code>drive.appdata</code>).</li>
+    <li>Pulse uses that folder only to sync your settings, playlists and songs between your devices. It cannot see or change other files in your Drive.</li>
+    <li>The sign-in key is stored only on your computer. You can sign out at any time in Settings; you can also remove access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+    <li>Pulse's use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements.</li>
+  </ul>
+
+  <h2>Online services Pulse talks to</h2>
+  <ul>
+    <li><b>Lyrics and track info</b>: track title and artist are sent to LRCLIB, Deezer, iTunes Search and AcoustID to find lyrics, covers and correct names.</li>
+    <li><b>AI assistant</b>: your message, plus short context (time of day, weather, names of some songs in your library), is sent to an AI provider (DeepSeek or Google Gemini) to get a reply. Web searches go through DuckDuckGo. Don't put secrets in the chat.</li>
+    <li><b>Weather</b>: your approximate city is looked up by IP (ipwho.is), weather comes from Open-Meteo. You can type your city instead.</li>
+    <li><b>Discord</b> (optional): what you're playing is shown in your Discord status, only if you turn it on.</li>
+    <li><b>Updates</b>: Pulse checks GitHub for new versions.</li>
+  </ul>
+
+  <h2>Deleting your data</h2>
+  <p>Settings → “Reset everything” wipes local data. Uninstalling removes the app. Synced data in your Drive's hidden app folder can be removed from Google Drive settings (Manage apps → Pulse → Delete hidden app data).</p>
+
+  <h2>Contact</h2>
+  <p>Questions? Open an issue at <a href="https://github.com/Blank0321/pulse-releases/issues" target="_blank" rel="noopener">github.com/Blank0321/pulse-releases</a>.</p>
+</section>
+
+<section data-l="ru">
+  <h1>Конфиденциальность</h1>
+  <p class="upd">Обновлено: 25 ноября 2026</p>
+  <p>Коротко: Pulse — это плеер, который работает на твоём компьютере. Мы не продаём данные, не показываем рекламу и не следим за тобой.</p>
+
+  <h2>Что остаётся на компьютере</h2>
+  <p>Музыка, медиатека, плейлисты, настройки, статистика и чат с помощником хранятся у тебя в папке приложения (<b>%APPDATA%</b>). Своего сервера, который бы это собирал, у Pulse нет.</p>
+
+  <h2>Вход через Google (по желанию)</h2>
+  <ul>
+    <li>Если войти через Google, Pulse получает имя и почту (чтобы показать, кто вошёл) и доступ к <b>скрытой папке приложения на твоём Google Диске</b> (<code>drive.appdata</code>).</li>
+    <li>Эта папка нужна только для переноса настроек, плейлистов и песен между устройствами. Другие файлы на Диске Pulse не видит и не меняет.</li>
+    <li>Ключ входа хранится только на твоём компьютере. Выйти можно в Настройках, а отозвать доступ — на <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+    <li>Pulse использует данные из Google API по правилам Google API Services User Data Policy, включая требования Limited Use.</li>
+  </ul>
+
+  <h2>С какими сервисами Pulse связывается</h2>
+  <ul>
+    <li><b>Тексты и данные о треках</b>: название и исполнитель отправляются в LRCLIB, Deezer, iTunes Search и AcoustID, чтобы найти текст, обложку и правильное название.</li>
+    <li><b>ИИ-помощник</b>: твоё сообщение и немного контекста (время суток, погода, названия некоторых песен из медиатеки) отправляются ИИ-сервису (DeepSeek или Google Gemini), чтобы получить ответ. Поиск в интернете идёт через DuckDuckGo. Не пиши в чат пароли и личные данные.</li>
+    <li><b>Погода</b>: примерный город определяется по IP (ipwho.is), погода — от Open-Meteo. Город можно вписать вручную.</li>
+    <li><b>Discord</b> (по желанию): что у тебя играет, видно в статусе Discord, только если ты это включил.</li>
+    <li><b>Обновления</b>: Pulse проверяет новые версии на GitHub.</li>
+  </ul>
+
+  <h2>Как удалить данные</h2>
+  <p>Настройки → «Сбросить вообще всё» стирает данные на компьютере. Удаление приложения убирает сам Pulse. Данные в скрытой папке на Диске можно удалить в настройках Google Диска (Управление приложениями → Pulse → Удалить скрытые данные).</p>
+
+  <h2>Связь</h2>
+  <p>Вопросы — пиши в <a href="https://github.com/Blank0321/pulse-releases/issues" target="_blank" rel="noopener">github.com/Blank0321/pulse-releases</a>.</p>
+</section>
+<p style="margin-top:50px"><a href="./" class="back">← pulse</a></p>
+</main>
+
+<script>
+(() => {
+  const q = new URLSearchParams(location.search).get('lang');
+  let saved = null; try { saved = localStorage.getItem('pulse-lang'); } catch {}
+  let lang = q === 'ru' || q === 'en' ? q : (saved || 'en');
+  const apply = () => {
+    document.documentElement.lang = lang;
+    document.title = lang === 'ru' ? 'Pulse — конфиденциальность' : 'Pulse — Privacy';
+    document.querySelectorAll('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.lang === lang));
+    document.querySelector('.back').href = './' + (lang === 'ru' ? '?lang=ru' : '');
+  };
+  document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => { lang = b.dataset.lang; try { localStorage.setItem('pulse-lang', lang); } catch {} apply(); }));
+  apply();
+})();
+</script>
+</body>
+</html>

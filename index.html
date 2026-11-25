@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — your music, but it hits different</title>
+<meta name="description" content="Pulse is a free music player for Windows: 3D scenes that move with the beat, karaoke lyrics, an AI sidekick, mini player, Google Drive sync. No ads, no subscription.">
+<meta property="og:title" content="Pulse — music player for Windows">
+<meta property="og:description" content="3D scenes that move with the beat, karaoke, AI sidekick. Free. No ads.">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07060c">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Pulse">
+    <img src="assets/icon.png" alt="" width="30" height="30">
+    <span>pulse</span>
+  </a>
+  <nav class="links">
+    <a href="#scenes" data-i18n="nav.scenes">scenes</a>
+    <a href="#features" data-i18n="nav.features">features</a>
+    <a href="#install" data-i18n="nav.install">install</a>
+    <a href="#updates" data-i18n="nav.updates">updates</a>
+    <a href="#faq" data-i18n="nav.faq">faq</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="on">EN</button>
+      <button data-lang="ru">RU</button>
+    </div>
+    <a class="btn btn-sm dl-link" href="https://github.com/Blank0321/pulse-releases/releases/latest" data-i18n="nav.get">get it</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="blob" aria-hidden="true"></canvas>
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="kicker reveal"><span class="dot"></span><span data-i18n="hero.kicker">free · windows · no ads</span></p>
+      <h1 class="headline">
+        <span class="line"><span data-i18n="hero.h1a">your music.</span></span>
+        <span class="line"><span class="grad" data-i18n="hero.h1b">but it hits different.</span></span>
+      </h1>
+      <p class="sub reveal" data-i18n="hero.sub">A music player for the tracks you actually own. 3D scenes that move with the beat, karaoke lyrics, an AI sidekick that knows your taste. No subs, no ads, no BS.</p>
+      <div class="cta reveal">
+        <a class="btn btn-big dl-link magnet" href="https://github.com/Blank0321/pulse-releases/releases/latest">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.5 1.2L21 21v-8.4h-9.5v7.1Zm0-15.4v7.2H21V3l-9.5 1.3Z"/></svg>
+          <span><b data-i18n="hero.dl">Download for Windows</b><small class="dl-meta">64-bit · Windows 10 / 11</small></span>
+        </a>
+        <button class="btn btn-ghost" id="beatBtn" aria-pressed="false">
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span data-i18n="hero.beat">drop a beat</span>
+        </button>
+      </div>
+      <p class="hint reveal" data-i18n="hero.hint">that blob? it's one of the scenes inside the app. hit "drop a beat" and watch it vibe.</p>
+    </div>
+    <div class="bars" id="bars" aria-hidden="true"></div>
+    <a class="scroll-cue" href="#scenes" aria-label="scroll"><span></span></a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span data-i18n="mq">3D scenes ✦ karaoke ✦ AI sidekick ✦ mini player ✦ google drive sync ✦ discord status ✦ media keys ✦ gapless ✦ equalizer ✦ auto-updates ✦ </span>
+      <span data-i18n="mq">3D scenes ✦ karaoke ✦ AI sidekick ✦ mini player ✦ google drive sync ✦ discord status ✦ media keys ✦ gapless ✦ equalizer ✦ auto-updates ✦ </span>
+    </div>
+  </div>
+
+  <!-- SCENES -->
+  <section class="scenes" id="scenes">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="sc.eyebrow">now playing</p>
+      <h2 data-i18n="sc.h">nine worlds. every one dances to your track.</h2>
+      <p class="lead" data-i18n="sc.lead">Pick a vibe — the whole scene breathes with the bass, lyrics glide over it like a music video. Or drop in your own 3D model.</p>
+    </div>
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+        <div class="window">
+          <div class="win-bar"><i></i><i></i><i></i><span id="sceneTitle">Liquid chrome</span></div>
+          <div class="shots" id="shots"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pills" id="pills" role="tablist"></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="ft.eyebrow">what's inside</p>
+      <h2 data-i18n="ft.h">everything a player should've had already.</h2>
+    </div>
+
+    <div class="bento">
+      <article class="card c-lyrics reveal">
+        <div class="viz lyr" aria-hidden="true">
+          <p>la la la, la la la</p>
+          <p class="cur">this line is lit rn</p>
+          <p>next one's comin up</p>
+          <p>sing it, you know it</p>
+        </div>
+        <h3 data-i18n="f.lyr.h">karaoke that actually syncs</h3>
+        <p data-i18n="f.lyr.p">Pulse finds lyrics on its own and lights them up line by line. Tap a line to jump there. Off by a bit? Nudge the speed — it remembers per song.</p>
+      </article>
+
+      <article class="card c-ai reveal">
+        <div class="viz chat" aria-hidden="true">
+          <div class="msg me" data-i18n="f.ai.q">put on something for the gym</div>
+          <div class="msg bot"><span class="av"></span><span data-i18n="f.ai.a">say less 💪 shuffling your hardest stuff, volume up</span></div>
+        </div>
+        <h3 data-i18n="f.ai.h">AI sidekick</h3>
+        <p data-i18n="f.ai.p">Chat with it like a homie. It knows your library and the app, plays stuff, flips settings, checks news on your artists, drops a daily tip. Give it a name and a face.</p>
+      </article>
+
+      <article class="card c-mini reveal">
+        <div class="viz mini" aria-hidden="true">
+          <div class="pill"><span class="cov"></span><span class="t"><b>Night drive</b><small>1:12 / 3:40</small></span><span class="pp"></span></div>
+        </div>
+        <h3 data-i18n="f.mini.h">mini player</h3>
+        <p data-i18n="f.mini.p">Minimize Pulse and a slim pill sits in the corner — cover, title, controls. Drag it anywhere, it stays there.</p>
+      </article>
+
+      <article class="card c-sync reveal">
+        <div class="viz sync" aria-hidden="true"><span class="pc"></span><span class="flow"><i></i><i></i><i></i></span><span class="cloud"></span></div>
+        <h3 data-i18n="f.sync.h">your stuff follows you</h3>
+        <p data-i18n="f.sync.p">Sign in with Google and your songs, playlists and settings ride along to your next PC — stored in your own Google Drive, not on some server.</p>
+      </article>
+
+      <article class="card c-dc reveal">
+        <div class="viz dc" aria-hidden="true">
+          <div class="dcard"><span class="dimg"></span><span><small data-i18n="f.dc.l">listening to Pulse</small><b>Night drive</b><em>you know who</em></span></div>
+        </div>
+        <h3 data-i18n="f.dc.h">discord flex</h3>
+        <p data-i18n="f.dc.p">Your friends see what you're playing. Wanna stay lowkey? Show just the artist, or just “listening”.</p>
+      </article>
+
+      <article class="card c-keys reveal">
+        <div class="viz keys" aria-hidden="true"><kbd>⏮</kbd><kbd class="hit">⏯</kbd><kbd>⏭</kbd></div>
+        <h3 data-i18n="f.keys.h">media keys & hotkeys</h3>
+        <p data-i18n="f.keys.p">Keyboard media keys, the Windows volume popup with cover art, your own global hotkeys — they work even mid-game.</p>
+      </article>
+
+      <article class="card c-sound reveal">
+        <div class="viz eqv" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <h3 data-i18n="f.snd.h">sound, dialed in</h3>
+        <p data-i18n="f.snd.p">No gaps between tracks, crossfade, equalizer, bass boost, volume leveling, speed up to 3×, A–B loop, sleep timer.</p>
+      </article>
+
+      <article class="card c-smart reveal">
+        <div class="viz fix" aria-hidden="true"><s>track_01_final(2).mp3</s><b>Night drive — Somebody</b></div>
+        <h3 data-i18n="f.fix.h">cleans up your mess</h3>
+        <p data-i18n="f.fix.p">Ugly file names become proper titles with covers. Finds duplicates, imports playlists from Spotify / Yandex, turns videos into mp3. Smart shuffle that won't spam the same 5 songs.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="install" id="install">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="in.eyebrow">install</p>
+      <h2 data-i18n="in.h">up and running in a minute.</h2>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><span class="n">1</span><h3 data-i18n="in.1h">download</h3><p data-i18n="in.1p">Hit the button — you get one small file (~5 MB).</p></li>
+      <li class="reveal"><span class="n">2</span><h3 data-i18n="in.2h">windows gets shy</h3><p data-i18n="in.2p">A blue “Windows protected your PC” box may pop up — that's just because Pulse is new and indie. Click <b>More info</b> → <b>Run anyway</b>.</p>
+        <div class="smartscreen" aria-hidden="true"><b>Windows protected your PC</b><span class="mi">More info</span><span class="ra">Run anyway</span></div>
+      </li>
+      <li class="reveal"><span class="n">3</span><h3 data-i18n="in.3h">pick your music</h3><p data-i18n="in.3p">Point Pulse at your music folder (or sign in with Google). Done. Updates install themselves from now on.</p></li>
+    </ol>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="updates" id="updates">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="up.eyebrow">patch notes</p>
+      <h2 data-i18n="up.h">we ship. a lot.</h2>
+      <p class="lead" data-i18n="up.lead">Pulse updates itself — you'll see what's new right in the app. Notes are in Russian for now.</p>
+    </div>
+    <div class="rel-list" id="rel"><p class="muted" data-i18n="up.loading">loading…</p></div>
+    <p class="all-rel"><a href="https://github.com/Blank0321/pulse-releases/releases" target="_blank" rel="noopener" data-i18n="up.all">all versions on GitHub →</a></p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="sec-head reveal">
+      <p class="eyebrow">faq</p>
+      <h2 data-i18n="fq.h">questions? answers.</h2>
+    </div>
+    <div class="qa">
+      <details class="reveal"><summary data-i18n="q1">Is it free?</summary><p data-i18n="a1">Yep. Free, no ads, no subscription, no account needed.</p></details>
+      <details class="reveal"><summary data-i18n="q2">Where does the music come from?</summary><p data-i18n="a2">From your own files — mp3, flac, m4a, wav, ogg and more. Pulse is a player, it doesn't download music from YouTube or streaming services.</p></details>
+      <details class="reveal"><summary data-i18n="q3">Windows says it's unsafe — what's up?</summary><p data-i18n="a3">Windows warns about any new app that hasn't bought an expensive code-signing certificate yet. Click “More info” → “Run anyway”. Updates are signed, so the app only accepts real Pulse updates.</p></details>
+      <details class="reveal"><summary data-i18n="q4">What do I need?</summary><p data-i18n="a4">Windows 10 or 11, 64-bit. Any half-decent PC runs it; the 3D scenes love a real GPU, and there's a “simple” mode for older laptops.</p></details>
+      <details class="reveal"><summary data-i18n="q5">Phone? Mac?</summary><p data-i18n="a5">On the way: Android first, then iPhone, then Mac.</p></details>
+      <details class="reveal"><summary data-i18n="q6">Where's my data?</summary><p data-i18n="a6">On your PC. If you sign in with Google, a copy goes to your own Google Drive so you can move to another PC. Nothing is sold or tracked.</p></details>
+      <details class="reveal"><summary data-i18n="q7">How do updates work?</summary><p data-i18n="a7">Pulse checks for updates when it starts. One click — it updates and restarts, your music and settings stay.</p></details>
+      <details class="reveal"><summary data-i18n="q8">Can I hide what I'm playing on Discord?</summary><p data-i18n="a8">Sure: Settings → Discord. Show the track, only the artist, just “listening”, or turn it off.</p></details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <h2 class="reveal"><span data-i18n="fin.a">turn it up.</span></h2>
+    <a class="btn btn-big dl-link magnet reveal" href="https://github.com/Blank0321/pulse-releases/releases/latest">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.5 1.2L21 21v-8.4h-9.5v7.1Zm0-15.4v7.2H21V3l-9.5 1.3Z"/></svg>
+      <span><b data-i18n="hero.dl">Download for Windows</b><small class="dl-meta">64-bit · Windows 10 / 11</small></span>
+    </a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="brand"><img src="assets/icon.png" alt="" width="22" height="22"><span>pulse</span></div>
+  <p><a href="privacy.html" class="lang-link" data-i18n="ft.priv">privacy</a> · <a href="https://github.com/Blank0321/pulse-releases/releases" target="_blank" rel="noopener" data-i18n="ft.ver">all versions</a></p>
+  <p class="muted" data-i18n="ft.made">made with love and way too much bass.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
