@@ -66,6 +66,7 @@
     $$('.lang-link').forEach((a) => { a.href = 'privacy.html' + (lang === 'ru' ? '?lang=ru' : ''); });
     renderPills();
     renderReleases();
+    renderDlMeta();
   }
   $$('.lang button').forEach((b) => b.addEventListener('click', () => {
     lang = b.dataset.lang; store.set('pulse-lang', lang);
@@ -74,7 +75,14 @@
   }));
 
   /* ---------------- download link ---------------- */
-  let dlUrl = null;
+  let dlUrl = null, dlRel = null;
+  function renderDlMeta() {
+    if (!dlRel) return;
+    const mb = (dlRel.size / 1048576).toFixed(1);
+    $$('.dl-meta').forEach((s) => {
+      s.textContent = lang === 'ru' ? `${dlRel.ver} · 64 бит · ${mb.replace('.', ',')} МБ · Windows 10 / 11` : `${dlRel.ver} · 64-bit · ${mb} MB · Windows 10 / 11`;
+    });
+  }
   async function resolveDownload() {
     try {
       let rel;
@@ -90,9 +98,9 @@
         try { sessionStorage.setItem('pulse-rel', JSON.stringify(rel)); } catch { /* ignore */ }
       }
       dlUrl = rel.url;
-      const mb = (rel.size / 1048576).toFixed(1);
+      dlRel = rel;
       $$('.dl-link').forEach((a) => { a.href = rel.url; });
-      $$('.dl-meta').forEach((s) => { s.textContent = `${rel.ver} · 64-bit · ${mb} MB · Windows 10 / 11`; });
+      renderDlMeta();
     } catch { /* keep the fallback link to the releases page */ }
   }
   $$('.dl-link').forEach((a) => a.addEventListener('click', () => { if (dlUrl) toast(t('toast.dl')); }));
@@ -120,7 +128,7 @@
   function renderReleases() {
     const box = $('#rel');
     if (!box) return;
-    if (relFailed) { box.innerHTML = `<p class="muted">${t('up.fail')}</p>`; return; }
+    if (relFailed) { box.innerHTML = `<p class="muted">${t('up.fail')}</p>`; jumpToHash(); return; }
     if (!releases) return;
     const fmt = new Intl.DateTimeFormat(lang === 'ru' ? 'ru-RU' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
     box.innerHTML = '';
@@ -137,6 +145,16 @@
       card.append(left, ul);
       box.appendChild(card);
     });
+    jumpToHash();
+  }
+  // the app opens the site at #updates; the list loads late, so scroll there once it's in
+  let jumped = false;
+  function jumpToHash() {
+    if (jumped || !location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    jumped = true;
+    setTimeout(() => el.scrollIntoView({ behavior: 'instant', block: 'start' }), 60);
   }
 
   /* ---------------- scenes gallery ---------------- */
