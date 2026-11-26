@@ -179,7 +179,8 @@ h2 { font-size: clamp(32px, 4.6vw, 62px); line-height: 1.04; font-weight: 700; m
 .card:hover::before { opacity: 1; }
 .card h3 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
 .card p { margin: 0; color: var(--dim); font-size: 15.5px; }
-.c-lyrics, .c-ai { grid-column: span 3; }
+.c-lyrics, .c-ai, .c-add { grid-column: span 3; }
+.c-shell { grid-column: span 3; }
 .viz { height: 170px; margin: -6px -6px 22px; border-radius: 16px; background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.05); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 
 /* lyrics viz */
@@ -331,3 +332,17 @@ details p { margin: 0; padding: 0 24px 22px; color: var(--dim); }
   .headline .line > span { transform: none; }
   .stage { --rx: 0deg !important; --s: 1 !important; }
 }
+
+/* оболочка для стриминга */
+.shell { gap: 10px; flex-wrap: wrap; padding: 0 18px; }
+.shell .src { padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); font-size: 13px; font-weight: 700; color: var(--dim); animation: srcpulse 3s infinite; }
+.shell .src:nth-child(2) { animation-delay: 1s } .shell .src:nth-child(3) { animation-delay: 2s }
+@keyframes srcpulse { 0%, 60%, 100% { color: var(--dim); border-color: rgba(255,255,255,.1) } 20% { color: #fff; border-color: #e879f9 } }
+.shell .arrow { font-size: 22px; color: var(--a2); font-weight: 800; }
+.shell .pulsebox { display: flex; align-items: center; gap: 8px; padding: 8px 12px 8px 8px; border-radius: 14px; background: var(--grad); color: #1a0a24; font-size: 12.5px; }
+.shell .pulsebox img { width: 30px; height: 30px; border-radius: 8px; }
+.addv { gap: 18px; }
+.addv .plus { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; font-weight: 300; background: var(--grad); color: #1a0a24; box-shadow: 0 0 40px -6px rgba(217,70,239,.7); animation: breathe 3s ease-in-out infinite; }
+.addv .files { display: flex; flex-direction: column; gap: 6px; }
+.addv .files i { font-style: normal; font-size: 13px; padding: 5px 10px; border-radius: 8px; background: rgba(255,255,255,.06); font-family: ui-monospace, Consolas, monospace; color: var(--dim); }
+.addv .files i:last-child { color: #4ade80; }
